@@ -8,4 +8,4 @@ void main() {
   var number = 98;
   stdout.write('$number');
   print(' Battery street\n');
-}rinted to the console using [print()].
+}
