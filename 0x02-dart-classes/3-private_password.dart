@@ -1,10 +1,52 @@
-import '3-private_password.dart';
+// User class that has name as String, age as Integer, and height as double.
+class User {
+  // properties
+  String name = "";
+  int age = 0;
+  double height = 0.0;
 
-void main() {
-  final ps = Password(password: "Passwordcode");
-  print(ps.toString());
-  print(ps.isValid());
-  final ps2 = Password(password: "PasswordDecode3");
-  print(ps2.toString());
-  print(ps2.isValid());
+  // constructor
+  User({required this.name, required this.age, required this.height});
+
+  // methods
+  String showName() {
+    return "Hello $name";
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'age': age,
+      'height': height
+    };
+  }
+}
+
+
+class Password {
+  var _password = "";
+
+  // constructor
+  Password({required String password}) : _password = password;
+
+  // getter
+  String get password => _password;
+
+  // isValid() setter
+  bool isValid() {
+   if (
+     ((password.length >= 8) && (password.length <= 16))
+    && (password.contains(new RegExp(r'[A-Z]')))
+    && (password.contains(new RegExp(r'[a-z]')))
+    && (password.contains(new RegExp(r'[0-9]')))) {
+     return true;
+   } else {
+     return false;
+   }
+  }
+
+ @override
+  String toString() {
+    return 'Your Password is: $password';
+  }
 }
