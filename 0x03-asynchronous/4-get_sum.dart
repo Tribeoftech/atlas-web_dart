@@ -1,22 +1,16 @@
-import '4-main.dart';
+import '4-util.dart';
 import 'dart:convert';
-// calculateTotal() calculates total price of items for a certain user.
-
 
 Future<double> calculateTotal() async {
   try {
-    // await is ONLY used in this function to wait for the return of
-    // functions from 4-main.dart
-
-    // gets user data by calling fetchUserData
-    final Map<String, dynamic> userData = json.decode(await fetchUserData());
-    // gets user's orders by calling fetchCart with id
-    final String id = userData['id'];
-    final List<dynamic> userOrders = json.decode(await fetchUserOrders(id));
-    // calculates total price of items
-    double total = 0;
-    for (final product in userOrders) {
-      total += json.decode(await fetchProductPrice(product));
+    var user = await fetchUserData();
+    var userId = jsonDecode(user)['id'];
+    var orders = await fetchUserOrders(userId);
+    var orderList = jsonDecode(orders);
+    var total = 0.0;
+    for (var order in orderList) {
+      var price = await fetchProductPrice(order);
+      total += jsonDecode(price);
     }
     return total;
   } catch (e) {
