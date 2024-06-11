@@ -1,4 +1,4 @@
-import '3-main.dart';
+import '3-util.dart';
 import 'dart:convert';
 
 // greetUser returns the string 'hello ' + username from loginUser()
@@ -20,9 +20,11 @@ Future<String> greetUser() async {
 Future<String> loginUser() async {
   try {
     if (await checkCredentials()) {
-      return 'There is a user: true\n${await greetUser()}';
+      print('There is a user: true');
+      return await greetUser();
     } else {
-      return 'There is a user: false\nWrong credentials';
+      print('There is a user: false');
+      return 'Wrong credentials';
     }
   } catch (e) {
     return 'error caught: $e';
