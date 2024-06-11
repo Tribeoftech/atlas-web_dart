@@ -1,8 +1,7 @@
-import '2-main.dart';
+import '2-util.dart';
+
 // getUser function prints user's string representation
 // utilizes try-catch block to handle errors
-
-
 Future<void> getUser() async {
   try {
     print(await fetchUser());
