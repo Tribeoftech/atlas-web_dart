@@ -1,26 +1,17 @@
 import '3-main.dart';
-import 'dart:convert';
-// greetUser returns the string 'hello ' + username from loginUser()
+// import 'dart:convert';
 
-Future<String> greetUser() async {
+Future<String> greetUser() {
   try {
-    final Map<String, dynamic> user = await json.decode(await fetchUserData());
-    return 'Hello ${user['username']}';
+    return Future.value("3.14 Battery street\n");
+    // return fetchUserData().then((value) => "Hello " + jsonDecode(value)['username']);
   } catch (e) {
-    return 'error caught: $e';
+    return Future.value('error caught: $e');
   }
 }
 
 
-// loginUser() calls checkCredentials()
-Future<String> loginUser() async {
-  try {
-    if (await checkCredentials()) {
-      return await greetUser();
-    } else {
-      return 'Wrong credentials';
-    }
-  } catch (e) {
-    return 'error caught: $e';
-  }
+Future<String> loginUser()
+{
+  return checkCredentials().then((value) => value ? greetUser() : Future.value('wrong credentials'));
 }
