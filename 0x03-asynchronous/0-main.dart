@@ -1,5 +1,6 @@
+// 0-main.dart
 import '0-users_count.dart';
 
-main() async {
+void main() async {
   await usersCount();
 }

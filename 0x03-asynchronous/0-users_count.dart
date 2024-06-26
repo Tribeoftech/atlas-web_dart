@@ -1,6 +1,5 @@
-import '0-utils.dart';
-// Prints number of users by asynchronously fetching from fetchUsersCount()
-
+// 0-users_count.dart
+import '0-util.dart';
 
 Future<void> usersCount() async {
   final int usersCount = await fetchUsersCount();
