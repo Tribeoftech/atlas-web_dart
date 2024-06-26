@@ -1,18 +1,16 @@
+// 5-json_to_user.dart
+
 class User {
   // Properties
+  int id;
   String name;
   int age;
   double height;
-  int id;
 
   // Constructor
-  User({this.name = '', this.age = 0, this.height = 0.0, this.id = 0});
+  User({required this.id, required this.name, required this.age, required this.height});
 
   // Methods
-  String showName() {
-    return 'Hello $name';
-  }
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -22,7 +20,7 @@ class User {
     };
   }
 
-  static User fromJson(Map<dynamic, dynamic> userJson) {
+  static User fromJson(Map<String, dynamic> userJson) {
     return User(
       id: userJson['id'],
       name: userJson['name'],
@@ -31,7 +29,8 @@ class User {
     );
   }
 
+  @override
   String toString() {
-    return 'User(id : $id ,name: $name,  age: $age, height: $height)';
+    return 'User(id: $id, name: $name, age: $age, height: $height)';
   }
 }
