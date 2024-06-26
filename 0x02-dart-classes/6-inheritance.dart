@@ -1,5 +1,5 @@
 // 6-inheritance.dart
-
+import '6-main.dart'
 import '6-password.dart';
 
 class User extends Password {
